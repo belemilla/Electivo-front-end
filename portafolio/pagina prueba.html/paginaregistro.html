@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | The Chosen - Los Elegidos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Página de registro para unirse a la comunidad de fans de The Chosen.">
+    <style>
+        /* Estilos generales */
+        *
+        {
+    scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Paleta de colores de The Chosen */
+        :root {
+            --chosen-navy: #1d3557;       /* Azul oscuro, color principal */
+            --chosen-blue: #457b9d;       /* Azul medio */
+            --chosen-light: #f1faee;      /* Color claro para fondos */
+            --chosen-gold: #e9c46a;       /* Dorado para acentos */
+            --chosen-accent: #d4a373;     /* Marrón dorado para detalles */
+            --chosen-accent-dark: #9c6644; /* Marrón más oscuro */
+            --chosen-red: #e63946;        /* Rojo para llamadas a la acción */
+            --chosen-text: #333333;       /* Color texto principal */
+            --chosen-text-light: #f8f9fa; /* Color texto sobre fondos oscuros */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--chosen-text);
+            line-height: 1.6;
+            background-color: var(--chosen-light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--chosen-navy);
+            transition: all 0.3s ease;
+        }
+
+        /* Header y navegación */
+        header {
+            background-color: var(--chosen-navy);
+            background-image: linear-gradient(to bottom, var(--chosen-navy), #1a2e4a);
+            color: var(--chosen-text-light);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo {
+            height: 70px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .menu li {
+            margin: 0 15px;
+        }
+
+        .menu a {
+            color: var(--chosen-text-light);
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--chosen-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .menu a:hover {
+            color: var(--chosen-gold);
+        }
+
+        .menu a:hover::after {
+            width: 80%;
+        }
+
+        .btn-registro {
+            background-color: var(--chosen-red);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-registro:hover {
+            background-color: #c33238;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Sección Formulario de Registro */
+        .registro-section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .registro-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .registro-header h1 {
+            font-size: 2.5rem;
+            color: var(--chosen-navy);
+            position: relative;
+            display: inline-block;
+        }
+
+        .registro-header h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--chosen-gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .registro-header p {
+            margin-top: 20px;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-top: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--chosen-navy);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--chosen-blue);
+            box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.1);
+            outline: none;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--chosen-red);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+            align-self: center;
+        }
+
+        .submit-btn:hover {
+            background-color: #c33238;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            color: var(--chosen-blue);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-link a:hover {
+            color: var(--chosen-navy);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--chosen-navy);
+            background-image: linear-gradient(to top, var(--chosen-navy), #1a2e4a);
+            color: var(--chosen-text-light);
+            padding: 30px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .menu li {
+                margin: 5px 10px;
+            }
+
+            .registro-header h1 {
+                font-size: 2rem;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/The+Chosen+-+square.jpg" alt="Logo de The Chosen" class="logo">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="paginap.html#inicio">Inicio</a></li>
+                <li><a href="paginap.html#acerca">Acerca de</a></li>
+                <li><a href="paginap.html#temporadas">Temporadas</a></li>
+                <li><a href="paginap.html#personajes">Personajes</a></li>
+               <li><a href="paginaregistro.html" class="btn-registro">Únete a la comunidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="registro-section">
+            <div class="registro-header">
+                <h1>Únete a la comunidad de The Chosen</h1>
+                <p>Forma parte de nuestra comunidad de fans y recibe actualizaciones sobre la serie, eventos especiales y contenido exclusivo.</p>
+            </div>
+
+            <div class="form-container">
+                <form id="registro-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="50" placeholder="Ingresa tu nombre completo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha-nacimiento">Fecha de nacimiento:</label>
+                        <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>¿Cómo conociste la serie The Chosen?</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="amigo" name="como-conocio" value="amigo" required>
+                                <label for="amigo">Un amigo me la recomendó</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="redes" name="como-conocio" value="redes">
+                                <label for="redes">Redes sociales</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="iglesia" name="como-conocio" value="iglesia">
+                                <label for="iglesia">En mi iglesia</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="publicidad" name="como-conocio" value="publicidad">
+                                <label for="publicidad">Publicidad</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="otro" name="como-conocio" value="otro">
+                                <label for="otro">Otro</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="temporada-favorita">¿Cuál es tu temporada favorita?</label>
+                        <select id="temporada-favorita" name="temporada-favorita" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="temporada1">Temporada 1</option>
+                            <option value="temporada2">Temporada 2</option>
+                            <option value="temporada3">Temporada 3</option>
+                            <option value="temporada4">Temporada 4</option>
+                            <option value="todas">Todas son increíbles</option>
+                            <option value="ninguna">Aún no he visto la serie</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comentario">Cuéntanos por qué te gusta The Chosen:</label>
+                        <textarea id="comentario" name="comentario" required minlength="10" maxlength="500" placeholder="Comparte tu experiencia con la serie..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">UNIRME A LA COMUNIDAD</button>
+                </form>
+            </div>
+
+            <div class="back-link">
+                <a href="paginap.html">← Volver a la página principal</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2025 Sitio Fan de The Chosen. Este sitio no está afiliado oficialmente con Angel Studios.</p>
+        </div>
+    </footer>
+</body>
+</html>

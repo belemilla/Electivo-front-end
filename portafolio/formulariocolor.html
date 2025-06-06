@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- Configuración de visualización para dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear una cuenta en Discord</title>
+    <style>
+        /* Estilos generales para el cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif; 
+            /* Fondo verde degradado */
+            background: linear-gradient(135deg, #52b788, #2d6a4f);
+            margin: 0; /* Elimina los márgenes predeterminados */
+            padding: 40px; /* Aumentado el espacio interno alrededor del contenido */
+            display: flex; /* Usa flexbox para centrar el contenido */
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+        }
+        
+        /* Contenedor principal del formulario - AGRANDADO */
+        .container {
+            background-color: white; /* Fondo blanco para el formulario */
+            padding: 40px; /* Aumentado el espacio interno para el contenido */
+            border-radius: 12px; /* Bordes más redondeados */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+            width: 100%; 
+            max-width: 650px; /* Aumentado el ancho máximo */
+        }
+        
+        /* Estilo para el título principal */
+        h1 {
+            text-align: center; 
+            margin-bottom: 35px; /* Más espacio debajo del título */
+            font-size: 32px; /* Título más grande */
+            color: #2d6a4f; /* Color verde que combina con el fondo */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilo para cada grupo de elementos del formulario */
+        .form-group {
+            margin-bottom: 22px; /* Más espacio entre grupos de elementos */
+        }
+        
+        /* Estilo para las etiquetas de los campos */
+        label {
+            display: block; /* Hace que la etiqueta ocupe toda la línea */
+            margin-bottom: 10px; /* Más espacio debajo de las etiquetas */
+            font-weight: bold; 
+            color: #333; 
+            font-size: 16px; /* Texto de etiquetas más grande */
+        }
+        
+        /* Estilos comunes para campos de entrada, áreas de texto y selectores */
+        input, textarea, select {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            padding: 14px; /* Más espacio interno para el contenido */
+            border: 1px solid #ccc; 
+            border-radius: 6px; /* Bordes más redondeados */
+            box-sizing: border-box; /* Incluye el padding y borde en el ancho total */
+            font-size: 16px; /* Texto de input más grande */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        /* Efecto focus para campos de entrada */
+        input:focus, textarea:focus, select:focus {
+            border-color: #52b788;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.2);
+        }
+        
+        /* Estilo para grupos de radio buttons y checkboxes */
+        .radio-group, .checkbox-group {
+            display: flex; /* Usa flexbox para organizar elementos */
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+            gap: 15px; /* Más espacio entre opciones */
+            margin-top: 12px; 
+        }
+        
+        /* Estilo para cada opción de radio o checkbox */
+        .radio-option, .checkbox-option {
+            display: flex; /* Usa flexbox para alinear elementos */
+            align-items: center; /* Centra verticalmente */
+            min-width: 140px; /* Más ancho mínimo para cada opción */
+            font-size: 16px; /* Texto más grande */
+        }
+        
+        /* Estilo específico para inputs de tipo radio y checkbox */
+        .radio-option input, .checkbox-option input {
+            width: auto; /* Ancho automático basado en contenido */
+            margin-right: 8px; /* Más espacio a la derecha del input */
+            transform: scale(1.2); /* Hace los checkboxes y radios más grandes */
+        }
+        
+        /* Estilo para áreas de texto */
+        textarea {
+            resize: vertical; /* Permite redimensionar verticalmente */
+            min-height: 120px; /* Más altura mínima */
+        }
+        
+        /* Estilo para la sección de términos y condiciones */
+        .terms {
+            display: flex; 
+            align-items: flex-start; 
+            margin-top: 25px; /* Más espacio arriba */
+            margin-bottom: 30px; /* Más espacio abajo */
+            font-size: 16px; /* Texto más grande */
+        }
+        
+        /* Estilo para el checkbox de términos */
+        .terms input {
+            width: auto; 
+            margin-right: 12px; /* Más espacio a la derecha */
+            margin-top: 3px; 
+            transform: scale(1.2); /* Checkbox más grande */
+        }
+        
+        /* Estilo para enlaces en términos y condiciones */
+        .terms a {
+            color: #2d6a4f; /* Verde que combina con el fondo */
+            text-decoration: none; 
+            font-weight: bold;
+        }
+        
+        /* Efecto hover para enlaces */
+        .terms a:hover {
+            text-decoration: underline; 
+        }
+        
+        /* Estilo para el botón de envío */
+        button {
+            background-color: #2d6a4f; /* Verde que combina con el fondo */
+            color: white; 
+            border: none; /* Sin borde */
+            padding: 16px 24px; /* Más espacio interno */
+            border-radius: 6px; /* Bordes más redondeados */
+            cursor: pointer; /* Cambia el cursor a mano */
+            font-weight: bold; /* Texto en negrita */
+            font-size: 18px; /* Texto de botón más grande */
+            width: 100%; /* Ocupa todo el ancho */
+            transition: background-color 0.3s;
+        }
+        
+        /* Efecto hover para botón */
+        button:hover {
+            background-color: #1b4332; /* Verde más oscuro al pasar el ratón */
+        }
+        
+        /* Estilo para el texto de ayuda */
+        .hint {
+            font-size: 14px; /* Texto de pista más grande */
+            color: #666; /* Color gris un poco más oscuro */
+            margin-top: 6px; 
+        }
+        
+        /* Decoración para el formulario */
+        .form-decoration {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(82, 183, 136, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .deco-1 {
+            top: 10%;
+            left: 5%;
+        }
+        
+        .deco-2 {
+            bottom: 15%;
+            right: 8%;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos decorativos en el fondo -->
+    <div class="form-decoration deco-1"></div>
+    <div class="form-decoration deco-2"></div>
+    
+    <!-- Contenedor principal del formulario -->
+    <div class="container">
+        <!-- Título del formulario -->
+        <h1>Crear una cuenta en Discord</h1>
+        
+        <!-- Inicio del formulario -->
+        <form>
+           
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <!-- Input de tipo texto para el nombre -->
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <!-- Input de tipo texto para el apellido -->
+                <input type="text" id="apellido" name="apellido" required>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <!-- Input de tipo email para validación automática -->
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+           
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <!-- Input de tipo password para ocultar el texto -->
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <!-- Campo para confirmar la contraseña -->
+            <div class="form-group">
+                <label for="confirm-password">Confirmar contraseña:</label>
+                <!-- Input de tipo password para ocultar el texto -->
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            
+            <!-- Campo para la fecha de nacimiento -->
+            <div class="form-group">
+                <label for="fecha">Fecha de nacimiento:</label>
+                <!-- Input de tipo date para selector de fecha -->
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            
+            <!-- Sección para selección de género -->
+            <div class="form-group">
+                <label>Género:</label>
+                <!-- Grupo de opciones de radio buttons -->
+                <div class="radio-group">
+                    <!-- Opción masculino -->
+                    <div class="radio-option">
+                        <!-- Input de tipo radio para selección única -->
+                        <input type="radio" id="masculino" name="genero" value="masculino">
+                        <label for="masculino">Masculino</label>
+                    </div>
+                    
+                    <!-- Opción femenino -->
+                    <div class="radio-option">
+                        <input type="radio" id="femenino" name="genero" value="femenino">
+                        <label for="femenino">Femenino</label>
+                    </div>
+                    
+                    <!-- Opción prefiero no decirlo -->
+                    <div class="radio-option">
+                        <input type="radio" id="no-decir" name="genero" value="no-decir">
+                        <label for="no-decir">Prefiero no decirlo</label>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="descripcion">Descripción sobre ti:</label>
+                <!-- Área de texto para texto largo -->
+                <textarea id="descripcion" name="descripcion" placeholder="Cuéntanos un poco sobre ti..."></textarea>
+            </div>
+            
+            <!-- Sección para selección de intereses -->
+            <div class="form-group">
+                <label>Selecciona tus intereses: </label>
+                <!-- Grupo de opciones de checkbox -->
+                <div class="checkbox-group">
+                    <!-- Opción música -->
+                    <div class="checkbox-option">
+                        <!-- Input de tipo checkbox para selección múltiple -->
+                        <input type="checkbox" id="musica" name="intereses" value="musica">
+                        <label for="musica">Música</label>
+                    </div>
+                    
+                    <!-- Opción películas -->
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="peliculas" name="intereses" value="peliculas">
+                        <label for="peliculas">Películas</label>
+                    </div>
+                    
+                    <!-- Opción deportes -->
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="deportes" name="intereses" value="deportes">
+                        <label for="deportes">Deportes</label>
+                    </div>
+                    
+                    <!-- Opción tecnología -->
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="tecnologia" name="intereses" value="tecnologia">
+                        <label for="tecnologia">Tecnología</label>
+                    </div>
+                    
+                    <!-- Opción arte -->
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="arte" name="intereses" value="arte">
+                        <label for="arte">Arte</label>
+                    </div>
+                    
+                    <!-- Opción videojuegos -->
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="videojuegos" name="intereses" value="videojuegos">
+                        <label for="videojuegos">Videojuegos</label>
+                    </div>
+                    
+                    <!-- Opción literatura -->
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="literatura" name="intereses" value="literatura">
+                        <label for="literatura">Literatura</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección para aceptar términos y condiciones -->
+            <div class="terms">
+                <!-- Checkbox para aceptar términos -->
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">Al registrarte, aceptas los <a href="#">Términos y condiciones</a> de Discord.</label>
+            </div>
+            
+            <!-- Botón de envío del formulario -->
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+</body>
+</html>

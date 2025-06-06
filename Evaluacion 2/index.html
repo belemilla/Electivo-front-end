@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Pokémon Virtual - Profesor Oak</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🔬 Laboratorio Pokémon Virtual</h1>
+            <p>Elige tu compañero inicial con el Profesor Oak</p>
+        </header>
+
+        <main class="main-content">
+            <section class="trainer-section">
+                <h2><img src="entrenador pokemon.png" alt="Entrenador" class="trainer-icon"> Información del Entrenador</h2>
+                <div class="form-group">
+                    <label for="trainerName">Nombre del Entrenador:</label>
+                    <input type="text" id="trainerName" placeholder="Ingresa tu nombre">
+                    
+                    <label for="regionSelect">Región:</label>
+                    <select id="regionSelect">
+                        <option value="">Selecciona una región</option>
+                        <option value="kanto">Kanto</option>
+                        <option value="johto">Johto</option>
+                        <option value="hoenn">Hoenn</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="pokemon-section">
+                <h2 id="regionTitle">Pokémon Iniciales</h2>
+                <div id="pokemonContainer">
+                    <div class="loading">
+                        Selecciona una región para ver los Pokémon iniciales disponibles
+                    </div>
+                </div>
+            </section>
+
+            <section class="choices-section">
+                <h2>📋 Elecciones de Entrenadores</h2>
+                <ul id="choicesList" class="choices-list">
+                    <li class="choice-item">No hay elecciones aún. ¡Sé el primero en elegir tu Pokémon!</li>
+                </ul>
+                <button id="resetBtn" class="reset-btn">🔄 Reiniciar Todas las Elecciones</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
